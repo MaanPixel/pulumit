@@ -19,10 +19,14 @@ jobs:
           node-version: 14
 
       - name: Install Pulumi CLI
-        run: curl -fsSL https://get.pulumi.com | sh
+        run: |
+          curl -fsSL https://get.pulumi.com | sh
+          export PATH=$PATH:$HOME/.pulumi/bin
 
       - name: Configure Pulumi
-        run: pulumi login --cloud-url azurerm://AzureCloud --stack dev
+        run: |
+          pulumi login --cloud-url azurerm://AzureCloud
+          pulumi stack select dev
 
       - name: Pulumi Preview
         run: pulumi preview
