@@ -23,7 +23,9 @@ jobs:
           curl -fsSL https://get.pulumi.com | sh
           export PATH=$PATH:$HOME/.pulumi/bin
 
-      - name: Configure Pulumi
+      - name: Set PULUMI_ACCESS_TOKEN
+        env:
+          PULUMI_ACCESS_TOKEN: pul-1d0f506f1dacd9bd3ed7eb92de72ddce282da1c2
         run: pulumi login --cloud-url https://management.azure.com
 
       - name: Pulumi Preview
