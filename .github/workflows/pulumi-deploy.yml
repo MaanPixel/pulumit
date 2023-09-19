@@ -24,9 +24,7 @@ jobs:
           export PATH=$PATH:$HOME/.pulumi/bin
 
       - name: Configure Pulumi
-        run: |
-          pulumi login --cloud-url azurerm://AzureCloud
-          pulumi stack select dev
+        run: pulumi login --cloud-url https://management.azure.com
 
       - name: Pulumi Preview
         run: pulumi preview
